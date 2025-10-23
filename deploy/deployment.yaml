@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nexflix
+  namespace: nexflix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nexflix
+  template:
+    metadata:
+      labels:
+        app: nexflix
+    spec:
+      containers:
+      - name: nexflix
+        image: itay80/nexflix-cicd:latest
+        ports:
+        - containerPort: 3000

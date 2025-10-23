@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nexflix
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: itay80/nexflix-cicd
+    argocd-image-updater.argoproj.io/itay80/nexflix-cicd.update-strategy: latest
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/shmueliitay/nexflix-cicd.git'
+    targetRevision: main
+    path: deploy
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: nexflix
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
