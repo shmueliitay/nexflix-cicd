@@ -4,8 +4,8 @@ metadata:
   name: nexflix
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: itay80/nexflix-cicd
-    argocd-image-updater.argoproj.io/itay80/nexflix-cicd.update-strategy: latest
+    argocd-image-updater.argoproj.io/image-list: my-image=itay80/nexflix-cicd
+    argocd-image-updater.argoproj.io/itay80-nexflix-cicd.update-strategy: latest
 spec:
   project: default
   source:
